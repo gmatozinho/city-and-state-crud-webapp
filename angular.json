@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "city-and-state-crud-webapp"
+    }
+  },
+  "defaultProject": "city-and-state-crud-webapp",
+  "cli": {
+    "analytics": "3550c8e9-3fff-4cdc-b0f6-85d251ed5f5f"
+  }
 }
