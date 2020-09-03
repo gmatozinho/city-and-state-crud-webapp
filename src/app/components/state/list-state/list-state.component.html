@@ -1,0 +1,38 @@
+<div class="col-md-6 state-container">
+  <h2 style="margin: auto">State Details</h2>
+  <button class="btn btn-success" style="width: 100px" (click)="addState()">
+    Add State
+  </button>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Abbreviation</th>
+        <th>CreatedAt</th>
+        <th>UpdatedAt</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let state of states">
+        <td>{{state._id}}</td>
+      <td>{{state.name}}</td>
+      <td>{{state.abbreviation}}</td>
+      <td>{{state.createdAt}}</td>
+      <td>{{state.updatedAt}}</td>
+        <td>
+          <button class="btn btn-danger" (click)="deleteState(state)">
+            Delete
+          </button>
+          <button
+            class="btn btn-success"
+            (click)="editState(state)"
+            style="margin-left: 20px;margin-top: 5px"
+          >
+            Edit
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
