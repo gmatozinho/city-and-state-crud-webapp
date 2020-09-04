@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { State } from '../model/state.model';
 import { Observable } from 'rxjs/index';
 import { ApiService } from './api.service';
+import { FilterState } from '../model/filterState.model';
 
 @Injectable()
 export class StateService extends ApiService {
@@ -11,8 +12,16 @@ export class StateService extends ApiService {
   }
   baseStateUrl: string = `${this.baseUrl}/state`;
 
-  getStates(): Observable<[State]> {
-    const response = this.http.get<[State]>(this.baseStateUrl);
+  getStates(filter?: FilterState): Observable<[State]> {
+    let params = new HttpParams();
+
+    if (filter) {
+      Object.keys(filter).forEach((key) => {
+        params = params.append(key, filter[key]);
+      });
+    }
+
+    const response = this.http.get<[State]>(this.baseStateUrl, { params });
     return response;
   }
 

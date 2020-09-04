@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { City } from '../model/city.model';
 import { Observable } from 'rxjs/index';
 import { ApiService } from './api.service';
+import { FilterCity } from '../model/filterCity.model';
 
 @Injectable()
 export class CityService extends ApiService {
@@ -11,8 +12,15 @@ export class CityService extends ApiService {
   }
   baseCityUrl: string = `${this.baseUrl}/city`;
 
-  getCities(): Observable<[City]> {
-    const response = this.http.get<[City]>(this.baseCityUrl);
+  getCities(filter?: FilterCity): Observable<[City]> {
+    let params = new HttpParams();
+
+    if (filter) {
+      Object.keys(filter).forEach((key) => {
+        params = params.append(key, filter[key]);
+      });
+    }
+    const response = this.http.get<[City]>(this.baseCityUrl, { params });
     return response;
   }
 

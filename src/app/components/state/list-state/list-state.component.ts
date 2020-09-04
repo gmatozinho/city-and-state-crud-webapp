@@ -1,4 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { State } from '../../../model/state.model';
 import { StateService } from '../../../service/state.service';
@@ -10,11 +11,30 @@ import { StateService } from '../../../service/state.service';
 })
 export class ListStateComponent implements OnInit {
   states: State[];
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private stateService: StateService
+  ) {}
 
-  constructor(private router: Router, private stateService: StateService) {}
+  searchForm: FormGroup;
+  sortByOptions: string[] = ['name', 'abbreviation'];
+  sortOrderOptions: string[] = ['ASC', 'DSC'];
 
   ngOnInit() {
     this.stateService.getStates().subscribe((data) => {
+      this.states = data;
+    });
+    this.searchForm = this.formBuilder.group({
+      name: [''],
+      abbreviation: [''],
+      sortBy: [''],
+      sortOrder: [''],
+    });
+  }
+
+  searchState() {
+    this.stateService.getStates(this.searchForm.value).subscribe((data) => {
       this.states = data;
     });
   }

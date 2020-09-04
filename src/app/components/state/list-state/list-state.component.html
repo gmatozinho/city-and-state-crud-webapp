@@ -3,6 +3,81 @@
   <button class="btn btn-success" style="width: 100px" (click)="addState()">
     Add State
   </button>
+
+  <form [formGroup]="searchForm" (ngSubmit)="searchState()">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input
+                type="text"
+                formControlName="name"
+                placeholder="Name"
+                name="name"
+                class="form-control"
+                id="name"
+              />
+            </div>
+          </th>
+          <th>
+            <div class="form-group">
+              <label for="abbreviation">Abbreviation:</label>
+              <input
+                type="text"
+                formControlName="abbreviation"
+                placeholder="Abbreviation"
+                name="abbreviation"
+                class="form-control"
+                id="abbreviation"
+              />
+            </div>
+          </th>
+          <th>
+            <div class="form-group">
+              <label for="sortBy">Sort By:</label>
+              <select
+                type="text"
+                formControlName="sortBy"
+                placeholder="Sort By"
+                name="sortBy"
+                class="form-control"
+                id="sortBy"
+              >
+                <option *ngFor="let option of sortByOptions" [value]="option">
+                  {{ option }}
+                </option>
+              </select>
+            </div>
+          </th>
+          <th>
+            <div class="form-group">
+              <label for="sortOrder">Sort Order:</label>
+              <select
+                type="text"
+                formControlName="sortOrder"
+                placeholder="Sort Order"
+                name="sortOrder"
+                class="form-control"
+                id="sortOrder"
+              >
+                <option *ngFor="let option of sortOrderOptions" [value]="option">
+                  {{ option }}
+                </option>
+              </select>
+            </div>
+          </th>
+          <th>
+            <div class="form-group">
+              <button class="btn btn-success">Search</button>
+            </div>
+          </th>
+        </tr>
+      </thead>
+    </table>
+  </form>
+
   <table class="table table-striped">
     <thead>
       <tr>
@@ -15,20 +90,18 @@
     </thead>
     <tbody>
       <tr *ngFor="let state of states">
-        <td>{{state._id}}</td>
-      <td>{{state.name}}</td>
-      <td>{{state.abbreviation}}</td>
-      <td>{{state.createdAt}}</td>
-      <td>{{state.updatedAt}}</td>
+        <td>{{ state._id }}</td>
+        <td>{{ state.name }}</td>
+        <td>{{ state.abbreviation }}</td>
+        <td>{{ state.createdAt }}</td>
+        <td>{{ state.updatedAt }}</td>
         <td>
           <button class="btn btn-danger" (click)="deleteState(state)">
             Delete
           </button>
-          <button
-            class="btn btn-success"
-            (click)="editState(state)"
-            style="margin-left: 20px;margin-top: 5px"
-          >
+        </td>
+        <td>
+          <button class="btn btn-success" (click)="editState(state)">
             Edit
           </button>
         </td>

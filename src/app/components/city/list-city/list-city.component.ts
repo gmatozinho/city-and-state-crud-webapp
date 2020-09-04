@@ -1,4 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { City } from '../../../model/city.model';
 import { CityService } from '../../../service/city.service';
@@ -11,10 +12,30 @@ import { CityService } from '../../../service/city.service';
 export class ListCityComponent implements OnInit {
   cities: City[];
 
-  constructor(private router: Router, private cityService: CityService) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private cityService: CityService
+  ) {}
+
+  searchForm: FormGroup;
+  sortByOptions: string[] = ['name', 'stateId'];
+  sortOrderOptions: string[] = ['ASC', 'DSC'];
 
   ngOnInit() {
     this.cityService.getCities().subscribe((data) => {
+      this.cities = data;
+    });
+    this.searchForm = this.formBuilder.group({
+      name: [''],
+      stateId: [''],
+      sortBy: [''],
+      sortOrder: [''],
+    });
+  }
+
+  searchCity() {
+    this.cityService.getCities(this.searchForm.value).subscribe((data) => {
       this.cities = data;
     });
   }

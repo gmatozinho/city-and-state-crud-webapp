@@ -1,39 +1,112 @@
 <div class="col-md-6 city-container">
-    <h2 style="margin: auto">City Details</h2>
-    <button class="btn btn-success" style="width: 100px" (click)="addCity()">
-      Add City
-    </button>
+  <h2 style="margin: auto">City Details</h2>
+  <button class="btn btn-success" style="width: 100px" (click)="addCity()">
+    Add City
+  </button>
+
+  <form [formGroup]="searchForm" (ngSubmit)="searchCity()">
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>Id</th>
-          <th>Name</th>
-          <th>CityId</th>
-          <th>CreatedAt</th>
-          <th>UpdatedAt</th>
+          <th>
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input
+                type="text"
+                formControlName="name"
+                placeholder="Name"
+                name="name"
+                class="form-control"
+                id="name"
+              />
+            </div>
+          </th>
+          <th>
+            <div class="form-group">
+              <label for="stateId">StateId:</label>
+              <input
+                type="text"
+                formControlName="stateId"
+                placeholder="StateId"
+                name="stateId"
+                class="form-control"
+                id="stateId"
+              />
+            </div>
+          </th>
+          <th>
+            <div class="form-group">
+              <label for="sortBy">Sort By:</label>
+              <select
+                type="text"
+                formControlName="sortBy"
+                placeholder="Sort By"
+                name="sortBy"
+                class="form-control"
+                id="sortBy"
+              >
+                <option *ngFor="let option of sortByOptions" [value]="option">
+                  {{ option }}
+                </option>
+              </select>
+            </div>
+          </th>
+          <th>
+            <div class="form-group">
+              <label for="sortOrder">Sort Order:</label>
+              <select
+                type="text"
+                formControlName="sortOrder"
+                placeholder="Sort Order"
+                name="sortOrder"
+                class="form-control"
+                id="sortOrder"
+              >
+                <option
+                  *ngFor="let option of sortOrderOptions"
+                  [value]="option"
+                >
+                  {{ option }}
+                </option>
+              </select>
+            </div>
+          </th>
+          <th>
+            <div class="form-group">
+              <button class="btn btn-success">Search</button>
+            </div>
+          </th>
         </tr>
       </thead>
-      <tbody>
-        <tr *ngFor="let city of cities">
-          <td>{{city._id}}</td>
-        <td>{{city.name}}</td>
-        <td>{{city.cityId}}</td>
-        <td>{{city.createdAt}}</td>
-        <td>{{city.updatedAt}}</td>
-          <td>
-            <button class="btn btn-danger" (click)="deleteCity(city)">
-              Delete
-            </button>
-            <button
-              class="btn btn-success"
-              (click)="editCity(city)"
-              style="margin-left: 20px;margin-top: 5px"
-            >
-              Edit
-            </button>
-          </td>
-        </tr>
-      </tbody>
     </table>
-  </div>
-  
+  </form>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>StateId</th>
+        <th>CreatedAt</th>
+        <th>UpdatedAt</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let city of cities">
+        <td>{{ city._id }}</td>
+        <td>{{ city.name }}</td>
+        <td>{{ city.stateId }}</td>
+        <td>{{ city.createdAt }}</td>
+        <td>{{ city.updatedAt }}</td>
+        <td>
+          <button class="btn btn-danger" (click)="deleteCity(city)">
+            Delete
+          </button>
+        </td>
+        <td>
+          <button class="btn btn-success" (click)="editCity(city)">Edit</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
