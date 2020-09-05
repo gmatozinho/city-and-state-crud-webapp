@@ -15,5 +15,8 @@ script:
 deploy:
   skip_cleanup: true
   provider: firebase
+  on:
+    branch:
+    - main
   token:
     secure: $FIREBASE_TOKEN
