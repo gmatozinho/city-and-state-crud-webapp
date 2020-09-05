@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/gmatozinho/city-and-state-crud-webapp.svg?branch=main)](https://travis-ci.org/gmatozinho/city-and-state-crud-webapp)
+
 # CityAndStateCrudWebapp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.0.
