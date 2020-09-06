@@ -19,5 +19,5 @@ deploy:
     branch:
     - main
   token: 
-    secure: FIREBASE_TOKEN
+    secure: UI3UjI/bEl2r0s03bHSjaWBoIrta6PaaC4Qavyz4r+zbM0ATu8t4ekUvyo+E3dIrXNBbGAa/BSkTa4VSZUHkWeeLsBZKYMelHAXwETOvaGMaq+cgJRy3ORnib5nSSXVVHfAlCLLoOJcTzDnolRy6o71Rs9KotyLEfLKAzqOGd7B4S8NFwU23G5nqssVVz5kK51E4ImBgzmjcc1oEUwE580r6o0tv5xvU6JR7RtsClu6MPyZsRSxlgJXB8bDg95y9HGwNmhFT5MJR1etwmF6cO75S+3dLCa5cyxeK/aV+biCFAf9AiqS7st5oXtBATaFpi6skIgBhssjgxfpmhM4lM1aUaKy3t8+v5OmFR8T5I7tGKWeg5z1ORfd5o8Pl8qoFbCb2HYEXNLc+/o8sJve0+Sfn3t19Ytbi4JqxMtOx2PbW/s4MlJ0VlKWgx8sP27jpePLUd8URYhM7R891RBG1bCO1ZI/U7hUS89dUbx1hRL3Zm1xJ0vfR/Wyuu+Z4HSW5SKwPEJWWiXR9GSBY5q35jvsiyS7UubCfpFTwkMDwAXn5rxLYnRqlN/zhE7b25unKO5DOySBPoml2M4LjhOj/aiGt7rbypIqoEqSuR3a98I0MpXY/rdHp1U6rZCK/oiR7YOVeBmsxOccMAPf8om+T3jpDVaCHbAJ4zg8v6t9X3jI=
   message: "this is an automatic deployment by travis - CI as a result of pushing to main"
