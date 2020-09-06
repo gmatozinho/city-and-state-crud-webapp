@@ -18,5 +18,6 @@ deploy:
   on:
     branch:
     - main
-  token: FIREBASE_TOKEN
+  token: 
+    secure: FIREBASE_TOKEN
   message: "this is an automatic deployment by travis - CI as a result of pushing to main"
