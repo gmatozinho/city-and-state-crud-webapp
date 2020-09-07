@@ -19,7 +19,6 @@ export class AddCityComponent implements OnInit {
 
   ngOnInit() {
     this.addForm = this.formBuilder.group({
-      id: [],
       name: ['', Validators.required],
       stateId: ['', Validators.required],
     });

@@ -19,7 +19,6 @@ export class AddStateComponent implements OnInit {
 
   ngOnInit() {
     this.addForm = this.formBuilder.group({
-      id: [],
       name: ['', Validators.required],
       abbreviation: ['', Validators.required],
     });
