@@ -11,3 +11,7 @@ Pagina web Url: [CrudAndStateWebApp](https://city-and-state-crud-webapp.web.app/
 - Necessário possuir o angular instalado.
 
 Executar `ng serve` para o ambiente de desenvolvimento. Navegar ate `http://localhost:4200/`.
+
+## Repositório contendo api:
+
+https://github.com/gmatozinho/city-and-state-crud-api
