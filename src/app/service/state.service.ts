@@ -35,9 +35,9 @@ export class StateService extends ApiService {
     return response;
   }
 
-  updateState(state: State): Observable<State> {
+  updateState(state: State, id: string): Observable<State> {
     const response = this.http.patch<State>(
-      `${this.baseStateUrl}/${state._id}`,
+      `${this.baseStateUrl}/${id}`,
       state
     );
     return response;

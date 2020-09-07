@@ -34,9 +34,9 @@ export class CityService extends ApiService {
     return response;
   }
 
-  updateCity(city: City): Observable<City> {
+  updateCity(city: City, id: string): Observable<City> {
     const response = this.http.patch<City>(
-      `${this.baseCityUrl}/${city._id}`,
+      `${this.baseCityUrl}/${id}`,
       city
     );
     return response;

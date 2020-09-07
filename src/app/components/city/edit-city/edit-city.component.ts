@@ -18,9 +18,10 @@ export class EditCityComponent implements OnInit {
     private router: Router,
     private cityService: CityService
   ) {}
+  
 
   ngOnInit() {
-    let cityId = window.localStorage.getItem('editCityId');
+    const cityId = window.localStorage.getItem('editCityId');
     if (!cityId) {
       alert('Invalid action.');
       this.router.navigate(['list-city']);
@@ -40,8 +41,13 @@ export class EditCityComponent implements OnInit {
   }
 
   onSubmit() {
+    const cityId = this.editForm.value['_id'];
+    delete this.editForm.value['_id'];
+    delete this.editForm.value['createdAt'];
+    delete this.editForm.value['updatedAt'];
+
     this.cityService
-      .updateCity(this.editForm.value)
+      .updateCity(this.editForm.value,cityId)
       .pipe(first())
       .subscribe(
         (data) => {
@@ -53,7 +59,7 @@ export class EditCityComponent implements OnInit {
           }
         },
         (error) => {
-          alert(error);
+          alert(error.message);
         }
       );
   }

@@ -20,7 +20,7 @@ export class EditStateComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    let stateId = window.localStorage.getItem('editStateId');
+    const stateId = window.localStorage.getItem('editStateId');
     if (!stateId) {
       alert('Invalid action.');
       this.router.navigate(['list-state']);
@@ -34,14 +34,19 @@ export class EditStateComponent implements OnInit {
       updatedAt: ['', Validators.required],
     });
     this.stateService.getStateById(stateId).subscribe((data) => {
-      delete data['__v']
+      delete data['__v'];
       this.editForm.setValue(data);
     });
   }
 
   onSubmit() {
+    const stateId = this.editForm.value['_id'];
+    delete this.editForm.value['_id'];
+    delete this.editForm.value['createdAt'];
+    delete this.editForm.value['updatedAt'];
+
     this.stateService
-      .updateState(this.editForm.value)
+      .updateState(this.editForm.value, stateId)
       .pipe(first())
       .subscribe(
         (data) => {
@@ -53,7 +58,7 @@ export class EditStateComponent implements OnInit {
           }
         },
         (error) => {
-          alert(error);
+          alert(error.message);
         }
       );
   }
