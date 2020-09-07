@@ -17,7 +17,9 @@ export class CityService extends ApiService {
 
     if (filter) {
       Object.keys(filter).forEach((key) => {
-        params = params.append(key, filter[key]);
+        if (filter[key] != '') {
+          params = params.append(key, filter[key]);
+        }
       });
     }
     const response = this.http.get<[City]>(this.baseCityUrl, { params });
@@ -35,10 +37,7 @@ export class CityService extends ApiService {
   }
 
   updateCity(city: City, id: string): Observable<City> {
-    const response = this.http.patch<City>(
-      `${this.baseCityUrl}/${id}`,
-      city
-    );
+    const response = this.http.patch<City>(`${this.baseCityUrl}/${id}`, city);
     return response;
   }
 

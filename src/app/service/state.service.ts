@@ -17,7 +17,9 @@ export class StateService extends ApiService {
 
     if (filter) {
       Object.keys(filter).forEach((key) => {
-        params = params.append(key, filter[key]);
+        if (filter[key] != '') {
+          params = params.append(key, filter[key]);
+        }
       });
     }
 
