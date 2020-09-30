@@ -4,7 +4,7 @@
 
 Projeto gerado com [Angular CLI](https://github.com/angular/angular-cli) version 10.1.0.
 
-Pagina web Url: [CrudAndStateWebApp](https://city-and-state-crud-webapp.web.app/)
+URL: [CrudAndStateWebApp](https://city-and-state-crud-webapp.web.app/)
 
 ## Para executar:
 
